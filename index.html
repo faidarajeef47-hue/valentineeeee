@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Ben babyyy 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:Poppins, sans-serif;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  text-align:center;
+}
+
+.card{
+  background:white;
+  padding:22px;
+  border-radius:20px;
+  width:92%;
+  max-width:420px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+button{
+  padding:14px 26px;
+  border:none;
+  border-radius:25px;
+  font-size:17px;
+  cursor:pointer;
+}
+
+#yes{background:#ff4d6d;color:white;}
+#no{background:#ddd;position:absolute;}
+.hidden{display:none;}
+
+.board{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:20px auto;
+  max-width:260px;
+}
+
+.cell{
+  width:80px;
+  height:80px;
+  font-size:36px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#ffe6eb;
+  border-radius:15px;
+}
+
+.hearts{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+#msg{
+  min-height:24px;
+  font-weight:500;
+}
+
+.letter{
+  font-family:'Dancing Script', cursive;
+  font-size:22px;
+  line-height:1.7;
+  text-align:left;
+  white-space:pre-line;
+  max-height:420px;
+  overflow-y:auto;
+  padding:10px;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="iwannabeyours-violin.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PROPOSAL -->
+<div class="card" id="proposal">
+  <h1>Ben, will you be my Valentine? 💌</h1>
+  <button id="yes">Yes 💖</button>
+  <button id="no">No 🙄</button>
+</div>
+
+<!-- YAY -->
+<div class="card hidden" id="yay">
+  <h1>yayyyyyyyyy :) 💘💘💘</h1>
+  <p>You’re officially my Valentine 😌❤️</p>
+  <p>I love you soo sooo soooo much 💞</p>
+  <button onclick="startGame()">open your letter 💌</button>
+</div>
+
+<!-- GAME -->
+<div class="card hidden" id="game">
+  <h2>Win Tic-Tac-Toe to read the letter 😏</h2>
+  <div class="hearts" id="lives"></div>
+  <div class="board" id="board"></div>
+  <p id="msg"></p>
+</div>
+
+<!-- LETTER -->
+<div class="card hidden" id="letter">
+  <h2>For you, Ben 💖</h2>
+  <div class="letter">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Ben babyyy 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:Poppins, sans-serif;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  text-align:center;
+}
+
+.card{
+  background:white;
+  padding:22px;
+  border-radius:20px;
+  width:92%;
+  max-width:420px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+button{
+  padding:14px 26px;
+  border:none;
+  border-radius:25px;
+  font-size:17px;
+  cursor:pointer;
+}
+
+#yes{background:#ff4d6d;color:white;}
+#no{background:#ddd;position:absolute;}
+
+.hidden{display:none;}
+
+.board{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:20px auto;
+  max-width:260px;
+}
+
+.cell{
+  width:80px;
+  height:80px;
+  font-size:36px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#ffe6eb;
+  border-radius:15px;
+}
+
+.hearts{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+#msg{
+  min-height:24px;
+  font-weight:500;
+}
+
+.letter{
+  font-family:'Dancing Script', cursive;
+  font-size:22px;
+  line-height:1.7;
+  text-align:left;
+  white-space:pre-line;
+  max-height:420px;
+  overflow-y:auto;
+  padding:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PROPOSAL -->
+<div class="card" id="proposal">
+  <h1>Ben, will you be my Valentine? 💌</h1>
+  <button id="yes">Yes 💖</button>
+  <button id="no">No 🙄</button>
+</div>
+
+<!-- YAY -->
+<div class="card hidden" id="yay">
+  <h1>yayyyyyyyyy :) 💘💘💘</h1>
+  <p>You’re officially my Valentine 😌❤️</p>
+  <p>I love you soo sooo soooo much 💞</p>
+  <button onclick="startGame()">open your letter 💌</button>
+</div>
+
+<!-- GAME -->
+<div class="card hidden" id="game">
+  <h2>Win Tic-Tac-Toe to read the letter 😏</h2>
+  <div class="hearts" id="lives"></div>
+  <div class="board" id="board"></div>
+  <p id="msg"></p>
+</div>
+
+<!-- LETTER -->
+<div class="card hidden" id="letter">
+  <h2>For you, Ben 💖</h2>
+  <div class="letter">
+Happy Valentine’s Day, babyyyy
+I love you soo so soooooo much. I still can’t believe I’m celebrating my first Valentine with my first love. I’m glad I found the courage to talk to you, because before you, I never thought I would feel a love like this. You are everything I dream about.
+
+Sometimes I get jealous of people who get to see you every day, because I wish I was there instead. Loving you from a distance isn’t always easy, but loving you is still my favorite thing. I’ve never been this comfortable with anyone but you, Ben. I’ve never felt this deeply before. You are the reason I look forward to my future. You make me want to change, to grow, to earn, to become better, so we can build something real together.
+
+I miss you so much it’s starting to ache in quiet moments, like my body remembers you before my mind does.I miss you soo much. Your touch, your lips, your hands, your breathing, your smile, your laughter, those deep brown eyes, your autistic humour, your scent, everything about you, Ben.I miss the way you make me feel wanted without trying, the way just thinking about you pulls me closer. Even when you’re not here, you stay with me, in my thoughts, in my skin, in my heart.
+
+Ben, I know we’ve had problems before, and sometimes I’m scared of losing what we have. But the way we’ve always tried to fix things together makes me believe in us. I don’t want a love that gives up when it gets hard. I want us to choose each other again and again. Not just for now, but for always, in whatever way life allows.
+Like the reel I sent you, no matter how much I’ve suffered before or how many mistakes I’ve made, if the result is you, I would still choose this love every single time baby.You are the sun in my life, even when things feel dark.
+
+I will always be there for you no matter what happens. We’ll get through everything together. I love you soo much, my love. Thank you for everything, baby..
+
+I love you soo  so soooo much, my love.
+Happy Valentine’s Day
+Thank you for being mine. 💞
+  </div>
+</div>
+
+<script>
+const no = document.getElementById("no");
+const yes = document.getElementById("yes");
+const boardDiv = document.getElementById("board");
+const msg = document.getElementById("msg");
+const livesDiv = document.getElementById("lives");
+
+const proposal = document.getElementById("proposal");
+const yay = document.getElementById("yay");
+const game = document.getElementById("game");
+const letter = document.getElementById("letter");
+
+/* No button escape */
+no.addEventListener("mouseover", moveNo);
+no.addEventListener("touchstart", moveNo);
+
+function moveNo(){
+  no.style.left = Math.random()*260 + "px";
+  no.style.top  = Math.random()*260 + "px";
+}
+
+/* Yes button */
+yes.onclick = () => {
+  proposal.classList.add("hidden");
+  yay.classList.remove("hidden");
+};
+
+let board, lives, waiting, roundActive;
+
+const wins = [
+  [0,1,2],[3,4,5],[6,7,8],
+  [0,3,6],[1,4,7],[2,5,8],
+  [0,4,8],[2,4,6]
+];
+
+function startGame(){
+  yay.classList.add("hidden");
+  game.classList.remove("hidden");
+  lives = 3;
+  startRound();
+}
+
+function startRound(){
+  board = Array(9).fill("");
+  boardDiv.innerHTML = "";
+  waiting = false;
+  roundActive = true;
+  updateLives();
+  msg.textContent = "Your move, baby 😌";
+
+  board.forEach((_,i)=>{
+    const cell = document.createElement("div");
+    cell.className = "cell";
+    cell.onclick = () => playerMove(i, cell);
+    boardDiv.appendChild(cell);
+  });
+}
+
+function updateLives(){
+  livesDiv.textContent = "❤️".repeat(lives);
+}
+
+function playerMove(i, cell){
+  if(!roundActive || waiting || board[i]) return;
+
+  board[i] = "X";
+  cell.textContent = "❌";
+
+  if(checkWin("X")){
+    roundActive = false;
+    msg.textContent = "You won baby!!!! 🥺💘";
+    return setTimeout(openLetter, 1200);
+  }
+
+  if(isTie()){
+    roundActive = false;
+    return handleLoss("Tie 😮 try again baby");
+  }
+
+  waiting = true;
+  msg.textContent = "Your baby is thinking… 🤔💗";
+  setTimeout(botMove, 900);
+}
+
+function botMove(){
+  if(!roundActive) return;
+
+  let i = findBest("O") ?? findBest("X") ?? randomMove();
+  board[i] = "O";
+  boardDiv.children[i].textContent = "⭕";
+  waiting = false;
+
+  if(checkWin("O")){
+    roundActive = false;
+    return handleLoss("Don’t give up baby 🥺 next round");
+  }
+
+  if(isTie()){
+    roundActive = false;
+    return handleLoss("Tie 😮 try again baby");
+  }
+
+  msg.textContent = "Your turn love 😌";
+}
+
+function handleLoss(text){
+  lives--;
+  updateLives();
+
+  if(lives > 0){
+    msg.textContent = text;
+    setTimeout(startRound, 1000);
+  } else {
+    msg.textContent = "Try again love 💗";
+    lives = 3;
+    setTimeout(startRound, 1200);
+  }
+}
+
+function openLetter(){
+  game.classList.add("hidden");
+  letter.classList.remove("hidden");
+}
+
+function findBest(p){
+  for(let [a,b,c] of wins){
+    let line=[board[a],board[b],board[c]];
+    if(line.filter(x=>x===p).length===2 && line.includes("")){
+      return [a,b,c][line.indexOf("")];
+    }
+  }
+  return null;
+}
+
+function randomMove(){
+  let empty = board.map((v,i)=>v==""?i:null).filter(v=>v!==null);
+  return empty[Math.floor(Math.random()*empty.length)];
+}
+
+function checkWin(p){
+  return wins.some(w=>w.every(i=>board[i]===p));
+}
+
+function isTie(){
+  return board.every(c=>c!=="");
+}
+</script>
+
+</body>
+</html>
+
+  </div>
+</div>
+
+<script>
+const no = document.getElementById("no");
+const yes = document.getElementById("yes");
+const boardDiv = document.getElementById("board");
+const msg = document.getElementById("msg");
+const livesDiv = document.getElementById("lives");
+const music = document.getElementById("bgMusic");
+
+no.onmouseover = () => {
+  no.style.left = Math.random()*260 + "px";
+  no.style.top  = Math.random()*260 + "px";
+};
+
+yes.onclick = () => {
+  proposal.classList.add("hidden");
+  yay.classList.remove("hidden");
+};
+
+let board, lives, waiting, roundActive;
+
+const wins = [
+  [0,1,2],[3,4,5],[6,7,8],
+  [0,3,6],[1,4,7],[2,5,8],
+  [0,4,8],[2,4,6]
+];
+
+function startGame(){
+  yay.classList.add("hidden");
+  game.classList.remove("hidden");
+
+  music.currentTime = 60;
+  music.volume = 0.5;
+  music.play();
+
+  lives = 3;
+  startRound();
+}
+
+function startRound(){
+  board = Array(9).fill("");
+  boardDiv.innerHTML = "";
+  waiting = false;
+  roundActive = true;
+  updateLives();
+  msg.textContent = "Your move, baby 😌";
+
+  board.forEach((_,i)=>{
+    const cell = document.createElement("div");
+    cell.className = "cell";
+    cell.onclick = () => playerMove(i, cell);
+    boardDiv.appendChild(cell);
+  });
+}
+
+function updateLives(){
+  livesDiv.textContent = "❤️".repeat(lives);
+}
+
+function playerMove(i, cell){
+  if(!roundActive || waiting || board[i]) return;
+
+  board[i] = "X";
+  cell.textContent = "❌";
+
+  if(checkWin("X")){
+    roundActive = false;
+    msg.textContent = "You won baby!!!! 🥺💘";
+    return setTimeout(openLetter, 1200);
+  }
+
+  if(isTie()){
+    roundActive = false;
+    return handleLoss("Tie 😮 try again baby");
+  }
+
+  waiting = true;
+  msg.textContent = "Your baby is thinking… 🤔💗";
+  setTimeout(botMove, 900);
+}
+
+function botMove(){
+  if(!roundActive) return;
+
+  let i = findBest("O") ?? findBest("X") ?? randomMove();
+  board[i] = "O";
+  boardDiv.children[i].textContent = "⭕";
+  waiting = false;
+
+  if(checkWin("O")){
+    roundActive = false;
+    return handleLoss("Don’t give up baby 🥺 next round");
+  }
+
+  if(isTie()){
+    roundActive = false;
+    return handleLoss("Tie 😮 try again baby");
+  }
+
+  msg.textContent = "Your turn love 😌";
+}
+
+function handleLoss(text){
+  lives--;
+  updateLives();
+
+  if(lives > 0){
+    msg.textContent = text;
+    setTimeout(startRound, 1000);
+  } else {
+    msg.textContent = "Try again love 💗";
+    lives = 3;
+    setTimeout(startRound, 1200);
+  }
+}
+
+function openLetter(){
+  game.classList.add("hidden");
+  letter.classList.remove("hidden");
+}
+
+function findBest(p){
+  for(let [a,b,c] of wins){
+    let line=[board[a],board[b],board[c]];
+    if(line.filter(x=>x===p).length===2 && line.includes("")){
+      return [a,b,c][line.indexOf("")];
+    }
+  }
+  return null;
+}
+
+function randomMove(){
+  let empty = board.map((v,i)=>v==""?i:null).filter(v=>v!==null);
+  return empty[Math.floor(Math.random()*empty.length)];
+}
+
+function checkWin(p){
+  return wins.some(w=>w.every(i=>board[i]===p));
+}
+
+function isTie(){
+  return board.every(c=>c!=="");
+}
+</script>
+
+</body>
+</html>

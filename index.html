@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>For Ben babyyy 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
@@ -39,124 +38,6 @@ button{
 
 #yes{background:#ff4d6d;color:white;}
 #no{background:#ddd;position:absolute;}
-.hidden{display:none;}
-
-.board{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin:20px auto;
-  max-width:260px;
-}
-
-.cell{
-  width:80px;
-  height:80px;
-  font-size:36px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#ffe6eb;
-  border-radius:15px;
-}
-
-.hearts{
-  font-size:22px;
-  margin-bottom:10px;
-}
-
-#msg{
-  min-height:24px;
-  font-weight:500;
-}
-
-.letter{
-  font-family:'Dancing Script', cursive;
-  font-size:22px;
-  line-height:1.7;
-  text-align:left;
-  white-space:pre-line;
-  max-height:420px;
-  overflow-y:auto;
-  padding:10px;
-}
-</style>
-</head>
-
-<body>
-
-<audio id="bgMusic" loop>
-  <source src="iwannabeyours-violin.mp3" type="audio/mpeg">
-</audio>
-
-<!-- PROPOSAL -->
-<div class="card" id="proposal">
-  <h1>Ben, will you be my Valentine? 💌</h1>
-  <button id="yes">Yes 💖</button>
-  <button id="no">No 🙄</button>
-</div>
-
-<!-- YAY -->
-<div class="card hidden" id="yay">
-  <h1>yayyyyyyyyy :) 💘💘💘</h1>
-  <p>You’re officially my Valentine 😌❤️</p>
-  <p>I love you soo sooo soooo much 💞</p>
-  <button onclick="startGame()">open your letter 💌</button>
-</div>
-
-<!-- GAME -->
-<div class="card hidden" id="game">
-  <h2>Win Tic-Tac-Toe to read the letter 😏</h2>
-  <div class="hearts" id="lives"></div>
-  <div class="board" id="board"></div>
-  <p id="msg"></p>
-</div>
-
-<!-- LETTER -->
-<div class="card hidden" id="letter">
-  <h2>For you, Ben 💖</h2>
-  <div class="letter">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Ben babyyy 💖</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
-
-<style>
-body{
-  margin:0;
-  font-family:Poppins, sans-serif;
-  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  min-height:100vh;
-  text-align:center;
-}
-
-.card{
-  background:white;
-  padding:22px;
-  border-radius:20px;
-  width:92%;
-  max-width:420px;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
-}
-
-button{
-  padding:14px 26px;
-  border:none;
-  border-radius:25px;
-  font-size:17px;
-  cursor:pointer;
-}
-
-#yes{background:#ff4d6d;color:white;}
-#no{background:#ddd;position:absolute;}
-
 .hidden{display:none;}
 
 .board{
@@ -249,18 +130,17 @@ Thank you for being mine. 💞
 </div>
 
 <script>
+const proposal = document.getElementById("proposal");
+const yay = document.getElementById("yay");
+const game = document.getElementById("game");
+const letter = document.getElementById("letter");
+
 const no = document.getElementById("no");
 const yes = document.getElementById("yes");
 const boardDiv = document.getElementById("board");
 const msg = document.getElementById("msg");
 const livesDiv = document.getElementById("lives");
 
-const proposal = document.getElementById("proposal");
-const yay = document.getElementById("yay");
-const game = document.getElementById("game");
-const letter = document.getElementById("letter");
-
-/* No button escape */
 no.addEventListener("mouseover", moveNo);
 no.addEventListener("touchstart", moveNo);
 
@@ -269,7 +149,6 @@ function moveNo(){
   no.style.top  = Math.random()*260 + "px";
 }
 
-/* Yes button */
 yes.onclick = () => {
   proposal.classList.add("hidden");
   yay.classList.remove("hidden");
@@ -312,7 +191,6 @@ function updateLives(){
 
 function playerMove(i, cell){
   if(!roundActive || waiting || board[i]) return;
-
   board[i] = "X";
   cell.textContent = "❌";
 
@@ -333,22 +211,13 @@ function playerMove(i, cell){
 }
 
 function botMove(){
-  if(!roundActive) return;
-
-  let i = findBest("O") ?? findBest("X") ?? randomMove();
+  let i = randomMove();
   board[i] = "O";
   boardDiv.children[i].textContent = "⭕";
   waiting = false;
 
-  if(checkWin("O")){
-    roundActive = false;
-    return handleLoss("Don’t give up baby 🥺 next round");
-  }
-
-  if(isTie()){
-    roundActive = false;
-    return handleLoss("Tie 😮 try again baby");
-  }
+  if(checkWin("O")) return handleLoss("Don’t give up baby 🥺 next round");
+  if(isTie()) return handleLoss("Tie 😮 try again baby");
 
   msg.textContent = "Your turn love 😌";
 }
@@ -356,180 +225,15 @@ function botMove(){
 function handleLoss(text){
   lives--;
   updateLives();
-
-  if(lives > 0){
-    msg.textContent = text;
-    setTimeout(startRound, 1000);
-  } else {
-    msg.textContent = "Try again love 💗";
-    lives = 3;
-    setTimeout(startRound, 1200);
-  }
+  msg.textContent = text;
+  setTimeout(startRound, 1000);
 }
 
 function openLetter(){
-  game.classList.add("hidden");
-  letter.classList.remove("hidden");
-}
-
-function findBest(p){
-  for(let [a,b,c] of wins){
-    let line=[board[a],board[b],board[c]];
-    if(line.filter(x=>x===p).length===2 && line.includes("")){
-      return [a,b,c][line.indexOf("")];
-    }
-  }
-  return null;
-}
-
-function randomMove(){
-  let empty = board.map((v,i)=>v==""?i:null).filter(v=>v!==null);
-  return empty[Math.floor(Math.random()*empty.length)];
-}
-
-function checkWin(p){
-  return wins.some(w=>w.every(i=>board[i]===p));
-}
-
-function isTie(){
-  return board.every(c=>c!=="");
-}
-</script>
-
-</body>
-</html>
-
-  </div>
-</div>
-
-<script>
-const no = document.getElementById("no");
-const yes = document.getElementById("yes");
-const boardDiv = document.getElementById("board");
-const msg = document.getElementById("msg");
-const livesDiv = document.getElementById("lives");
-const music = document.getElementById("bgMusic");
-
-no.onmouseover = () => {
-  no.style.left = Math.random()*260 + "px";
-  no.style.top  = Math.random()*260 + "px";
-};
-
-yes.onclick = () => {
   proposal.classList.add("hidden");
-  yay.classList.remove("hidden");
-};
-
-let board, lives, waiting, roundActive;
-
-const wins = [
-  [0,1,2],[3,4,5],[6,7,8],
-  [0,3,6],[1,4,7],[2,5,8],
-  [0,4,8],[2,4,6]
-];
-
-function startGame(){
   yay.classList.add("hidden");
-  game.classList.remove("hidden");
-
-  music.currentTime = 60;
-  music.volume = 0.5;
-  music.play();
-
-  lives = 3;
-  startRound();
-}
-
-function startRound(){
-  board = Array(9).fill("");
-  boardDiv.innerHTML = "";
-  waiting = false;
-  roundActive = true;
-  updateLives();
-  msg.textContent = "Your move, baby 😌";
-
-  board.forEach((_,i)=>{
-    const cell = document.createElement("div");
-    cell.className = "cell";
-    cell.onclick = () => playerMove(i, cell);
-    boardDiv.appendChild(cell);
-  });
-}
-
-function updateLives(){
-  livesDiv.textContent = "❤️".repeat(lives);
-}
-
-function playerMove(i, cell){
-  if(!roundActive || waiting || board[i]) return;
-
-  board[i] = "X";
-  cell.textContent = "❌";
-
-  if(checkWin("X")){
-    roundActive = false;
-    msg.textContent = "You won baby!!!! 🥺💘";
-    return setTimeout(openLetter, 1200);
-  }
-
-  if(isTie()){
-    roundActive = false;
-    return handleLoss("Tie 😮 try again baby");
-  }
-
-  waiting = true;
-  msg.textContent = "Your baby is thinking… 🤔💗";
-  setTimeout(botMove, 900);
-}
-
-function botMove(){
-  if(!roundActive) return;
-
-  let i = findBest("O") ?? findBest("X") ?? randomMove();
-  board[i] = "O";
-  boardDiv.children[i].textContent = "⭕";
-  waiting = false;
-
-  if(checkWin("O")){
-    roundActive = false;
-    return handleLoss("Don’t give up baby 🥺 next round");
-  }
-
-  if(isTie()){
-    roundActive = false;
-    return handleLoss("Tie 😮 try again baby");
-  }
-
-  msg.textContent = "Your turn love 😌";
-}
-
-function handleLoss(text){
-  lives--;
-  updateLives();
-
-  if(lives > 0){
-    msg.textContent = text;
-    setTimeout(startRound, 1000);
-  } else {
-    msg.textContent = "Try again love 💗";
-    lives = 3;
-    setTimeout(startRound, 1200);
-  }
-}
-
-function openLetter(){
   game.classList.add("hidden");
   letter.classList.remove("hidden");
-}
-
-function findBest(p){
-  for(let [a,b,c] of wins){
-    let line=[board[a],board[b],board[c]];
-    if(line.filter(x=>x===p).length===2 && line.includes("")){
-      return [a,b,c][line.indexOf("")];
-    }
-  }
-  return null;
 }
 
 function randomMove(){
